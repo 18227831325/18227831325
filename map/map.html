@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组Map</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<script src="./map.js"></script>
+<body>
+
+</body>
+<script>
+  const arr=[1,2,3,4,5];
+  const result=map(arr,(item,index) => {
+    console.log(index);
+    return item * 10
+  })
+  console.log(result);
+</script>
+</html>

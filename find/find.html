@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Find</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<body>
+
+</body>
+<script src="./find.js"></script>
+<script>
+const arr=[1,2,2121,3,4,5,1024]
+// const result=arr.find( item => item>4)
+let result=find(arr,item => item>4)
+let resultIndex=findIndex(arr,item => item>4)
+
+console.log(result);
+console.log(resultIndex);
+</script>
+</html>

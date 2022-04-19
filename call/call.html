@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Call函数的封装实现</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<script src="./index.js"></script>
+<body>
+
+</body>
+<script>
+  function add(a,b){
+    console.log(this);
+    return a+b+this.c;
+  }
+  obj={
+    c:10
+  }
+  window.c=20;
+  console.log(call(add,obj,30,40));
+  console.log(call(add,null,30,40));
+</script>
+</html>

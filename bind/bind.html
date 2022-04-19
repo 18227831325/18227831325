@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bind</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<body>
+
+</body>
+<script src="./bind.js"></script>
+<script src="../call/call.js"></script>
+<script>
+  function add(a,b){
+    console.log(this);
+    return a+b+this.c
+  }
+  let obj={
+    c:100
+  }
+  window.c=200;
+  let b=bind(add,obj,200,400);
+  let c=b(20,30)
+  console.log(b);
+  console.log(c);
+</script>
+</html>

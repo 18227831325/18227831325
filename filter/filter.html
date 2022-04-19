@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filter</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<body>
+<script src="./filter.js"></script>
+</body>
+<script>
+const arr=[1,2,3,4,5]
+// let result=arr.filter( item => item%2 === 1);
+ let result = filter(arr, item => item%2 === 0)
+console.log(result);
+</script>
+</html>

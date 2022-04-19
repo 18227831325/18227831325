@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Every</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+  </style>
+</head>
+<body>
+
+</body>
+<script src="./every.js"></script>
+<script>
+const arr=[1,2,2121,3,4,5,1024]
+// let result=arr.every(item => item>1)
+let result=every(arr,item => item>0)
+let resultSome=some(arr,item => item>100)
+// console.log(result);
+console.log(resultSome);
+</script>
+</html>

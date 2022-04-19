@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Throttle节流测试</title>
+  <style>
+      *{
+            margin:0;
+            padding:0;
+         }
+         body{
+           height: 2000px;
+           background: linear-gradient(#125,#eae);
+         }
+  </style>
+  <script src="./throttle.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+  //绑定滚动事件
+  //节流事件：自上一个方法执行后，延迟多少s执行
+  window.addEventListener('scroll',throttle(function(){
+    console.log(Date.now());
+  },2000))
+</script>
+</html>
