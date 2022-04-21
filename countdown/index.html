@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+         }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* background-color: brown; */
+            flex-direction: column;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+<h1>未来30分钟倒计时</h1>
+<p>时：</p>
+<p>分：</p>
+<p>秒：</p>
+
+</div>
+</body>
+<script>
+//倒计时多少秒交给外部来处理(单位统一成分钟，)
+function countdownMinutes(num) {
+    let timestamp = new Date(),y,month,date,h,m,s,endTime;
+    timestamp.setMinutes(timestamp.getMinutes() + num)
+    y = timestamp.getFullYear()
+    month = timestamp.getMonth() + 1 < 10 ? '0' + (timestamp.getMonth() + 1) : timestamp.getMonth() + 1
+    date = timestamp.getDate() < 10 ? '0' + timestamp.getDate() : timestamp.getDate()
+    h = timestamp.getHours() < 10 ? '0' + timestamp.getHours() : timestamp.getHours()
+    m = timestamp.getMinutes() < 10 ? '0' + timestamp.getMinutes() : timestamp.getMinutes()
+    endTime = `${y}/${month}/${date}  ${h}:${m}`
+    countdown(endTime)
+}
+
+function countdown(time) {
+    let startTime = new Date().getTime(),
+    endTime = new Date(time).getTime();
+    timestamp = endTime - startTime
+    let h,m,s;
+    setTimeout(() => {
+        if(timestamp > 0) {
+            h = Math.floor(timestamp / 1000 / 60 / 60) % 24
+            m = Math.floor(timestamp / 1000 / 60 ) % 60
+            s = Math.floor(timestamp / 1000 ) % 60
+            let pTag = document.getElementsByTagName('p')
+            pTag[0].innerText = `时：${h}`
+            pTag[1].innerText = `分：${m}`
+            pTag[2].innerText = `分：${s}`
+            countdown(endTime)
+        }
+    }, 1000);
+}
+countdownMinutes(30)
+</script>
+</html>
