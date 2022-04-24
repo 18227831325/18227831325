@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #app {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 200px;
+        }
+        .done {
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>{{ title }}</h2>
+    <input type="text" v-model="title" @keydown.enter="handleEnter">
+    <button v-if="active < all" @click="handleDel">清理</button>
+    <ul v-if="todos.length">
+        <li v-for="todo in todos">
+            <input type="checkbox" v-model="todo.done" >
+            <span :class="{done:todo.done}"> {{ todo.title }}</span>
+        </li>
+    </ul>
+    <p v-else>暂无数据</p>
+    <div :style="{display:'flex',alignItems:'center'}">
+        全选<input type="checkbox" v-model="allDone">
+        <p :style="{marginLeft:'10px'}">{{ active }}
+            /
+            {{ all }}</p>
+    </div>
+</div>
+</body>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+const App = {
+    data() {
+        return {
+            title: '',
+            todos: [
+                { title: '吃饭', done: true },
+                { title: '睡觉', done: false },
+                { title: '看书', done: false },
+            ]
+        }
+    },
+    computed: {
+        active() {
+            return this.todos.filter(i => !i.done).length
+        },
+        all() {
+            return this.todos.length
+        },
+        allDone: {
+            get: function() {
+                return this.active === 0
+            },
+            set: function(val) {
+                this.todos.forEach( i => i.done = val)
+            }
+        }
+    },
+    methods: {
+        handleEnter() {
+            this.todos.push({title:this.title})
+            this.title = ''
+        },
+        handleDel() {
+            this.todos = this.todos.filter(i => !i.done)
+        }
+    }
+}
+Vue.createApp(App).mount('#app')
+</script>
+</html>
