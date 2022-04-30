@@ -45,6 +45,20 @@
 </body>
 <script src="https://unpkg.com/vue@next"></script>
 <script>
+//两数之和
+const arr = [1,4,7,10,16]  //17
+function twoSum(arr, target) {
+    let map = new Map()
+    for(let i=0; i<arr.length;i++) {
+        let m = arr[i]
+        let n = target - m
+        if(map.has(n)) {
+            return [ map.get(n), i]
+        }
+        map.set(m, i)
+    }
+}
+twoSum(arr, 6)
 const App = {
     data() {
         return {
@@ -83,5 +97,7 @@ const App = {
     }
 }
 Vue.createApp(App).mount('#app')
+
+
 </script>
 </html>
