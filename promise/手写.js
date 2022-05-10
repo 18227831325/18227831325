@@ -95,15 +95,29 @@ const customPromiseAll = (arr) => {
         }
     })
 }
-const p1 = Promise.resolve(3)
-const p2 = 1337
-const p3 = new Promise((resolve, reject) => {
-    setTimeout(resolve, 100, 'foo')
+
+const p1 = Promise.resolve('p1')
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('p2 延时一秒')
+    }, 1000);
 })
+const p3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('p2 延时两秒')
+    }, 2000);
+})
+const p4 = Promise.reject('p4 rejected')
+const p5 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject('p5 reject1.5秒')
+    }, 1500);
+})
+
 customPromiseAll([p1,  p2, p3]).then(res => {
-    console.log(res);
+    // console.log(res);
 }).catch(err => {
-    console.log(err);
+    // console.log(err);
 })
 
 let commitment = new Commitment((resolve, reject) => {
@@ -120,3 +134,35 @@ commitment.then(
 // console.log(commitment.status);
 
 // console.log('第三步');
+
+Promise.promiseAll = promises => {
+    return new Promise((resolve, reject) => {
+        let ret = [], count = 0;
+        for(let i=0;i<promises.length;i++) {
+            Promise.resolve(promises[i]).then(res => {
+                ret[i] = res;
+                count += 1;
+                if(count === promises.length) {
+                    resolve(arr)
+                }
+            }).catch(reject)
+        }
+    })
+}
+
+Promise.promiseRace = promises => {
+    return new Promise((resolve, reject) => {
+        for(const item of promises) {
+            Promise.resolve(item).then(resolve, reject)
+        }
+    })
+}
+
+
+// Promise.promiseAll([p1,p2,p3,p4,p5])
+// .then(res => console.log(res))
+// .catch(err => console.log(err))
+
+Promise.promiseRace([p5,p2,p3])
+.then(res => console.log(res))
+.catch(err => console.log(err))
