@@ -9,7 +9,6 @@ function chunk(arr,size=1){
       list.push(temp)
     }
     temp.push(item)
-    console.log(temp);
     if(temp.length === size){
       temp=[]
     }
