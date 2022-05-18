@@ -28,7 +28,7 @@ var intToRoman = function(num) {
     for (const [key, value] of map) {
         console.log(key)
         console.log(value)
-        debugger;
+        // debugger;
         while(num >= key) {
             num -= key
             arr.push(value)
