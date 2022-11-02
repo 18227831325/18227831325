@@ -11,8 +11,8 @@ light()
 
 async function timer (color, delay) {
   return new Promise((res, rej) => {
-    console.log(color)
     setTimeout(() => {
+      console.log(color)
       res()
     }, delay);
   })
