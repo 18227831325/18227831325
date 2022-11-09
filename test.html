@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=0,viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <style>
-        *{
-            margin:0;
-            padding:0;
-         }
+      * {
+        margin: 0;
+        padding: 0;
+      }
     </style>
-</head>
-<body>
-
-</body>
-<script src="./intToRoman.js"></script>
-<script src="./letterCombinations.js"></script>
-<script>
-// const str = intToRoman(19994)
-// console.log(str)
-let str1 = "234"
-let arr = ["abc", "def"]
-const res = letterCombinations("23")
-console.log(res)
-</script>
+  </head>
+  <body></body>
+  <script src="./intToRoman.js"></script>
+  <script src="./letterCombinations.js"></script>
+  <script src="./replaceFetch.js"></script>
+  <script>
+    // const str = intToRoman(19994)
+    // console.log(str)
+    // let str1 = '234'
+    // let arr = ['abc', 'def']
+    // const res = letterCombinations('23')
+    // console.log(res)
+    // console.log(this)
+    replaceFetch('https://asdadsad.com')
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  </script>
 </html>
