@@ -1,5 +1,5 @@
 // deepClone
-function deepClone (obj) {
+function deepClone(obj) {
     let map = new Map()
     if (typeof obj !== 'object' || obj === null) {
         return obj
@@ -16,7 +16,7 @@ function deepClone (obj) {
 }
 // 新版deepClone, 可以让面试官眼前一亮的deepClone
 // https://developer.mozilla.org/zh-CN/docs/Web/API/MessageChannel
-function deepClone2(obj) {  
+function deepClone2(obj) {
     return new Promise((resolve) => {
         const { port1, port2 } = new MessageChannel()
         port1.postMessage(obj)
@@ -26,8 +26,15 @@ function deepClone2(obj) {
     })
 }
 // deepClone({a: 1})
-const obj = { a: 1}
+const obj = { a: 1 }
 deepClone2(obj).then(res => {
-    console.log(obj === res)
-    console.log(res)
+    // console.log(obj === res)
+    // console.log(res)
 })
+// 数字转中文
+function toChineseNumber(num) {
+    const strs = num.toString().replace(/(?=(\d{4})+$)/g, ',').split(',')
+        .filter(Boolean).toString()
+    console.log(strs)
+}
+toChineseNumber(12341234)
